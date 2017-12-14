@@ -6,17 +6,24 @@
   <table class="table">
     <thead>
       <tr class="title">
-        <td>ASd</td>
-        <td>ASd</td>
-        <td>ASd</td>
+        <td>Nombre</td>
+        <td>Tipo de proyecto</td>
+        <td>Prioridad</td>
+        <td>Presentacion</td>
+        <td>Estado</td>
+        <td>Editar</td>
+
       </tr>
     </thead>
     <tbody>
       @foreach($items as $item)
         <tr>
-          <td>{{ $item->id }}</td>
           <td>{{ $item->name }}</td>
-          <td class="edit"><a href="{{ url('admin/wiki/'.$item->id) }}">Editar</a></td>
+          <td>{{ $item->project_type->name }}</td>
+          <td>{{ $item->priority }}</td>
+          <td>{{ $item->presentation_date }} </td>
+          <td> {{ $item->status }} </td>
+          <td class="edit"><a href="{{ url('admin/project/'.$item->id) }}">Editar</a></td>
         </tr>
       @endforeach
     </tbody>

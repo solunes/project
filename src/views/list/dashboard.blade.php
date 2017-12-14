@@ -6,10 +6,48 @@
 
   <div class="row">
     <div class="col-sm-6">
-      <p>Aquí van la o las tareas pendientes y asignadas</p>
+    	<h2>Tareas de proyecto</h2>
+    	
+	       @foreach($tasks as $item)
+	       <div class="row">
+		       	<div class="col-sm-12">
+			        <h3>Proyecto :{{ $item->project->name }}</h3>
+			        <ul>
+				        <li>Tarea de Proyecto : {{ $item->name }}</li>
+				        <li>Detalle de tarea :{{ $item->observations }}</li>
+					</ul> 
+					<button type="button" class="btn btn-default"><a href="#"> Iniciar</a></button> 
+					<button type="button" class="btn btn-default"><a href="#">Pausear</a></button>  
+					<button type="button" class="btn btn-default"><a href="#">Concluido</a></button>
+				</div>
+			</div> 
+	      @endforeach
+  		
     </div>
     <div class="col-sm-6">
-      <p>Observaciones de Proyectos Activos</p>
+    	<h2>Problemas</h2>
+    	<table class="table">
+		    <thead>
+		      <tr class="title">
+		        <td>Problema</td>
+		        <td>Editar</td> 
+		      </tr>
+		    </thead>
+		    <tbody>
+	    		@foreach($active_project_issues as $item)
+		      	<tr>
+		          <td colspan="2">{{ $item->name }}</td>
+		        </tr>
+		    		@foreach($item->active_project_issues as $subitem)
+			      	<tr>
+			          <td>{{ $subitem->name }}</td>		          
+			          <td class="edit"><a href="{{ url('admin/project-isuee/'.$subitem->id) }}">Editar</a></td>
+			        </tr>
+			      	@endforeach
+	      		@endforeach
+      		</tbody>
+		  </table>
+		     
     </div>
   </div>
 

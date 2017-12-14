@@ -110,6 +110,7 @@ class NodesProject extends Migration
         Schema::create('project_issues', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('project_id')->unsigned();
+            $table->string('name')->nullable();
             $table->boolean('active')->nullable()->default(1);
             $table->text('content')->nullable();
             $table->timestamps();

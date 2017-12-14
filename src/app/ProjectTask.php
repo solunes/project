@@ -34,6 +34,10 @@ class ProjectTask extends Model {
 
 	);
         
+    public function default_task() {
+        return $this->belongsTo('Solunes\Project\App\DefaultTask');
+    }
+
     public function project() {
         return $this->belongsTo('Solunes\Project\App\Project');
     }
