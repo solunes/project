@@ -43,4 +43,5 @@
       </tbody>
     </table>
   @endif
+ <button type="button" class="btn btn-default"><a href= "{{ url('admin/model/default-task-howto/create?parameters={"f_created_at_from":null,"f_created_at_to":null}') }}"> Crear Wiki</a> </button>
 @endsection

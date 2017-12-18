@@ -15,6 +15,8 @@
 		@endforeach
 	</table>
 
+	<button type="button" class="btn btn-default"><a href= "{{ url('admin/model/task/create?parameters={"f_created_at_from":null,"f_created_at_to":null}') }}"> Crear Tarea</a> </button>
+	<button type="button" class="btn btn-default"><a href= "{{ url('admin/model/default-task/edit/1/es?parameters={"f_created_at_from":null,"f_created_at_to":null}') }}"> Editar Tarea</a> </button>
 
 
 </div>

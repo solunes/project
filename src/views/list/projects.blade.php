@@ -28,5 +28,6 @@
       @endforeach
     </tbody>
   </table>
+  <button type="button" class="btn"><a href= "{{ url('admin/model/project/create?parameters={"f_created_at_from":null,"f_created_at_to":null}') }}"> Crear Proyecto</a> </button>
 
 @endsection

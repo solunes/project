@@ -32,6 +32,7 @@
 		</div>
 		
 		<p>Botón de iniciar, pausear, concluyes.</p>
+		<button type="button" class="btn btn-default"><a href= "{{ url('admin/model/default-task/edit/1/es?parameters={"f_created_at_from":null,"f_created_at_to":null}') }}"> Editar Tarea</a> </button>
 		<button type="button" class="btn btn-default">Iniciar </button>
 		<button type="button" class="btn btn-default">Pausear</button>
 		<button type="button" class="btn btn-default">Concluido</button>
