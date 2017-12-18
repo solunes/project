@@ -11,7 +11,7 @@
         <td>Prioridad</td>
         <td>Presentacion</td>
         <td>Estado</td>
-        <td>Editar</td>
+        <td>VER</td>
 
       </tr>
     </thead>
@@ -23,7 +23,7 @@
           <td>{{ $item->priority }}</td>
           <td>{{ $item->presentation_date }} </td>
           <td> {{ $item->status }} </td>
-          <td class="edit"><a href="{{ url('admin/project/'.$item->id) }}">Editar</a></td>
+          <td class="edit"><a href="{{ url('admin/project/'.$item->id) }}">VER</a></td>
         </tr>
       @endforeach
     </tbody>

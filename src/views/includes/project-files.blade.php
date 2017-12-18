@@ -3,12 +3,12 @@
 		<tr class="title">
 			<td>Nombre</td>
 			<td>Contenido</td>
-			<td>Editar</td>
+			<td>VER</td>
 		</tr>
 			<tr>
 				<td>{{$item->name}}</td>
 				<td>{{ $item->content }}</td>
-				<td class="edit"><a href=" {{ url('admin/project-files/'.$item->id) }} ">Editar</td>
+				<td class="edit"><a href=" {{ url('admin/project-files/'.$item->id) }} ">VER</td>
 
 			</tr>
 

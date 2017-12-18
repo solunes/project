@@ -8,7 +8,7 @@
         <tr class="title">
           <td>Tipo de proyecto </td>
           <td>Contenido</td>
-          <td>Editar</td>
+          <td>VER</td>
         </tr>
       </thead>
       <tbody>
@@ -16,7 +16,7 @@
           <tr>
             <td>{{ $item->wiki_type->name }}</td>
             <td>{{ $item->name }}</td>
-            <td class="edit"><a href="{{ url('admin/wiki/'.$item->id) }}">Editar</a></td>
+            <td class="edit"><a href="{{ url('admin/wiki/'.$item->id) }}">VER</a></td>
           </tr>
         @endforeach
       </tbody>
@@ -26,14 +26,18 @@
       <thead>
         <tr class="title">
           <td>Nombre</td>
-          <td>Editar</td>
+          <td>VER</td>
         </tr>
       </thead>
       <tbody>
         @foreach($items as $item)
           <tr>
             <td>{{ $item->name }}</td>
-            <td class="edit"><a href="{{ url('admin/wiki/'.$item->id) }}">Editar</a></td>
+            @if($project_type_id)
+            <td class="edit"><a href="{{ url('admin/wikis/'.$project_type_id.'/'.$item->id) }}">VER</a></td>
+            @else
+            <td class="edit"><a href="{{ url('admin/wikis/'.$item->id) }}">VER</a></td>
+            @endif
           </tr>
         @endforeach
       </tbody>

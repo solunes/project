@@ -30,7 +30,7 @@
 		    <thead>
 		      <tr class="title">
 		        <td>Problema</td>
-		        <td>Editar</td> 
+		        <td>VER</td> 
 		      </tr>
 		    </thead>
 		    <tbody>
@@ -41,7 +41,7 @@
 		    		@foreach($item->active_project_issues as $subitem)
 			      	<tr>
 			          <td>{{ $subitem->name }}</td>		          
-			          <td class="edit"><a href="{{ url('admin/project-isuee/'.$subitem->id) }}">Editar</a></td>
+			          <td class="edit"><a href="{{ url('admin/project-issue/'.$subitem->id) }}">VER</a></td>
 			        </tr>
 			      	@endforeach
 	      		@endforeach
