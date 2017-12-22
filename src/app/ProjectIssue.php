@@ -20,7 +20,7 @@ class ProjectIssue extends Model {
 	public static $rules_edit = array(
 		'id'=>'required',
 		'project_id'=>'required',
-		'active'=>'required',
+		'active'=>'required',		
 		'content'=>'required',
 	);
         
