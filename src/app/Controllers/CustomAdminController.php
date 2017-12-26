@@ -25,7 +25,7 @@ class CustomAdminController extends Controller {
 		$user = auth()->user();
 		//$array['tasks'] = $user->active_project_tasks;
 		$array['tasks'] = \Solunes\Project\App\ProjectTask::limit(2)->get();
-		$array['active_issues_projects'] = \Solunes\Project\App\Project::has('active_project_issues')->with('active_project_issues')->get();
+		$array['active_project_issues'] = \Solunes\Project\App\Project::has('active_project_issues')->with('active_project_issues')->get();
       	return view('project::list.dashboard', $array);
 	}
 
@@ -66,8 +66,10 @@ class CustomAdminController extends Controller {
 	public function allWikis($project_type_id = NULL, $wiki_type_id = NULL) {
 		$array['project_type_id'] = $project_type_id;
 		$array['wiki_type_id'] = $wiki_type_id;
+		$array['filtered'] = false;
 		if($project_type_id&&$wiki_type_id){
 			$array['items'] = \Solunes\Project\App\Wiki::where('project_type_id',$project_type_id)->where('wiki_type_id',$wiki_type_id)->get();
+			$array['filtered'] = true;
 		} else if($project_type_id){
 			$array['items'] = \Solunes\Project\App\WikiType::get();
 		} else {

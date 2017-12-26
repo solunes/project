@@ -18,8 +18,8 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('projects', 'CustomAdminController@allProjects');
     Route::get('project/{id}/{subpage?}', 'CustomAdminController@findProject');
     Route::get('project-task/{id}', 'CustomAdminController@findProjectTask');
-    Route::get('project-issue/{id}', 'CustomAdminController@findProjectIssue');
-    Route::get('wikis/{category?}', 'CustomAdminController@allWikis');
+    Route::get('project-issue/{id}', 'CustomAdminController@findProjecIssue');
+    Route::get('wikis/{category?}/{subcategory?}', 'CustomAdminController@allWikis');
     Route::get('wiki/{id}', 'CustomAdminController@findWiki');
 
     // Módulo de Reportes

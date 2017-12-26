@@ -12,6 +12,7 @@ class ProjectTask extends Model {
 	/* Creating rules */
 	public static $rules_create = array(
 		'project_id'=>'required',
+		'default_task_id'=>'requerid',
 		'user_id'=>'required',
 		'name'=>'required',
 		'order'=>'required',
@@ -34,12 +35,19 @@ class ProjectTask extends Model {
 
 	);
         
+    public function default_task() {
+        return $this->belongsTo('Solunes\Project\App\DefaultTask');
+    }
+
     public function project() {
         return $this->belongsTo('Solunes\Project\App\Project');
     }
 
     public function project_task_updates() {
         return $this->hasMany('Solunes\Project\App\ProjectTaskUpdate');
+    }
+    public function USer() {
+        return $this->belongsTo('App\USer');
     }
 
 }

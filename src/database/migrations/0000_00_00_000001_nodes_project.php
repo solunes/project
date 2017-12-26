@@ -74,6 +74,7 @@ class NodesProject extends Migration
         // Módulo General de Proyectos
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('integration_code')->nullable();
             $table->string('name')->nullable();
             $table->integer('project_type_id')->unsigned();
             $table->integer('porcentage')->nullable();
@@ -89,6 +90,7 @@ class NodesProject extends Migration
             $table->integer('project_id')->unsigned();
             $table->integer('default_task_id')->unsigned();
             $table->integer('user_id')->nullable();
+            $table->string('integration_code')->nullable();
             $table->string('name')->nullable();
             $table->integer('order')->nullable()->default(0);
             $table->boolean('active')->nullable()->default(1);
@@ -101,6 +103,7 @@ class NodesProject extends Migration
         Schema::create('project_task_updates', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('project_task_id')->unsigned();
+            $table->string('integration_code')->nullable();
             $table->integer('user_id')->unsigned();
             $table->enum('status', ['started','paused','finished','closed'])->default('started');
             $table->text('observations')->nullable();
@@ -110,6 +113,8 @@ class NodesProject extends Migration
         Schema::create('project_issues', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('project_id')->unsigned();
+            $table->string('integration_code')->nullable();
+            $table->string('name')->nullable();
             $table->boolean('active')->nullable()->default(1);
             $table->text('content')->nullable();
             $table->timestamps();
@@ -119,6 +124,7 @@ class NodesProject extends Migration
             $table->increments('id');
             $table->integer('project_issue_id')->unsigned();
             $table->integer('user_id')->unsigned();
+            $table->string('integration_code')->nullable();
             $table->enum('status', ['opened','not-detected','partially-attended','closed','reopened'])->default('opened');
             $table->text('content')->nullable();
             $table->timestamps();

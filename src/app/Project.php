@@ -32,6 +32,10 @@ class Project extends Model {
 		'content'=>'required',
 	);
     
+    public function project_type() {
+        return $this->belongsTo('Solunes\Project\App\ProjectType');
+    }
+        
     public function project_tasks() {
         return $this->hasMany('Solunes\Project\App\ProjectTask');
     }
