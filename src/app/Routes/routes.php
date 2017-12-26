@@ -12,5 +12,11 @@
 */
 
 Route::group(['prefix'=>'process'], function(){
-    //Route::get('/calculate-shipping/{shipping_id}/{city_id}/{weight}', 'ProcessController@getCalculateShipping');
+    Route::get('/calculate-shipping/{shipping_id}/{city_id}/{weight}', 'ProcessController@getCalculateShipping');
+});
+
+Route::group(['prefix'=>'gitlab'], function(){
+    Route::get('/group-projects/{group_name}', 'GitlabController@getGroupProjects');
+    Route::get('/project/{project_name}/{group_name}', 'GitlabController@getProject');
+    Route::get('/project-commits/{project_name}/{group_name}', 'GitlabController@getProjectCommits');
 });
