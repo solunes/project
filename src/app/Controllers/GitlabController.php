@@ -15,8 +15,8 @@ class GitlabController extends Controller {
 	protected $url;
 
 	public function __construct(UrlGenerator $url) {
-	  $this->middleware('auth');
-	  $this->middleware('permission:dashboard');
+	  //$this->middleware('auth');
+	  //$this->middleware('permission:dashboard');
 	  $this->prev = $url->previous();
 	  $this->module = 'admin';
 	}
@@ -25,7 +25,7 @@ class GitlabController extends Controller {
         $key_code = config('project.gitlab_api_key');
 
         // Consulta CURL a Web Service
-        $url = 'https://gitlab.com/api/v4/'.$path.'?private_token='.config('project.gitlab_api_key');
+        $url = 'https://gitlab.com/api/v4/'.$path.'?per_page=100&private_token='.config('project.gitlab_api_key');
         $ch = curl_init();
         $options = array(
           CURLOPT_URL            => $url,
