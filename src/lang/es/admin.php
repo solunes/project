@@ -6,6 +6,9 @@ return array(
 	'project' => 'Proyecto',
 
 	// CUSTOM TRANS
+	'0' => 'No',
+	'1' => 'Si',
+	'active' => 'Activo',
 	'closed' => 'Cerrado',
 	'finished' => 'Finalizado',
 	'not-detected' => 'No Encontrado',
