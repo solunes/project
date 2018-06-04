@@ -36,4 +36,8 @@ class DefaultTask extends Model {
         return $this->belongsTo('Solunes\Project\App\Duty');
     }
 
+    public function default_task_howtos() {
+        return $this->hasMany('Solunes\Project\App\DefaultTaskHowto', 'parent_id');
+    }
+
 }

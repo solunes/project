@@ -23,12 +23,14 @@ class NodesProject extends Migration
         });
         Schema::create('task_alerts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('task_id')->unsigned();
             $table->string('name')->nullable();
             $table->text('content')->nullable();
             $table->date('date')->nullable();
             $table->time('time')->nullable();
             $table->boolean('done')->default(0);
             $table->timestamps();
+            $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
         });
         // Módulo General de Parametros de Proyectos
         Schema::create('project_types', function (Blueprint $table) {
@@ -45,11 +47,11 @@ class NodesProject extends Migration
         });
         Schema::create('duty_user', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('duty_id')->unsigned();
+            $table->integer('parent_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->integer('priority')->nullable()->default(5);
             $table->timestamps();
-            $table->foreign('duty_id')->references('id')->on('duties')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('duties')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
         Schema::create('default_tasks', function (Blueprint $table) {
@@ -65,22 +67,22 @@ class NodesProject extends Migration
         });
         Schema::create('default_task_howtos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('default_task_id')->unsigned();
+            $table->integer('parent_id')->unsigned();
             $table->string('name')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();
-            $table->foreign('default_task_id')->references('id')->on('default_tasks')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('default_tasks')->onDelete('cascade');
         });
         // Módulo General de Proyectos
         Schema::create('projects', function (Blueprint $table) {
             $table->increments('id');
             $table->string('integration_code')->nullable();
             $table->string('name')->nullable();
+            $table->integer('sale_id')->nullable();
             $table->integer('project_type_id')->unsigned();
-            $table->integer('porcentage')->nullable();
             $table->integer('priority')->nullable();
             $table->date('presentation_date')->nullable();
-            $table->enum('status', ['active','support','closed'])->nullable()->default('active');
+            $table->enum('status', ['holding','active','support','closed'])->nullable()->default('active');
             $table->text('content')->nullable();
             $table->timestamps();
             $table->foreign('project_type_id')->references('id')->on('project_types')->onDelete('cascade');
@@ -93,8 +95,9 @@ class NodesProject extends Migration
             $table->string('integration_code')->nullable();
             $table->string('name')->nullable();
             $table->integer('order')->nullable()->default(0);
-            $table->boolean('active')->nullable()->default(1);
-            $table->integer('time_hours')->nullable()->default(1);
+            $table->boolean('active')->nullable()->default(0);
+            $table->integer('estimated_hours')->nullable()->default(0);
+            $table->integer('time_hours')->nullable()->default(0);
             $table->text('observations')->nullable();
             $table->timestamps();
             $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
@@ -102,13 +105,13 @@ class NodesProject extends Migration
         });
         Schema::create('project_task_updates', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('project_task_id')->unsigned();
+            $table->integer('parent_id')->unsigned();
             $table->string('integration_code')->nullable();
             $table->integer('user_id')->unsigned();
             $table->enum('status', ['started','paused','finished','closed'])->default('started');
             $table->text('observations')->nullable();
             $table->timestamps();
-            $table->foreign('project_task_id')->references('id')->on('project_tasks')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('project_tasks')->onDelete('cascade');
         });
         Schema::create('project_issues', function (Blueprint $table) {
             $table->increments('id');
@@ -122,13 +125,13 @@ class NodesProject extends Migration
         });
         Schema::create('project_issue_updates', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('project_issue_id')->unsigned();
+            $table->integer('parent_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->string('integration_code')->nullable();
             $table->enum('status', ['opened','not-detected','partially-attended','closed','reopened'])->default('opened');
             $table->text('content')->nullable();
             $table->timestamps();
-            $table->foreign('project_issue_id')->references('id')->on('project_issues')->onDelete('cascade');
+            $table->foreign('parent_id')->references('id')->on('project_issues')->onDelete('cascade');
         });
         Schema::create('wiki_types', function (Blueprint $table) {
             $table->increments('id');

@@ -43,7 +43,11 @@ class Project extends Model {
     public function project_issues() {
         return $this->hasMany('Solunes\Project\App\ProjectIssue');
     }
-    
+        
+    public function sale() {
+        return $this->belongsTo('Solunes\Sales\App\Sale');
+    }
+
     public function active_project_tasks() {
         return $this->hasMany('Solunes\Project\App\ProjectTask')->where('active',1);
     }

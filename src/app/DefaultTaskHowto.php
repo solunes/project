@@ -25,9 +25,13 @@ class DefaultTaskHowto extends Model {
 		'name'=>'required',
 		'content'=>'required',
 	);
-    
+            
+    public function parent() {
+        return $this->belongsTo('Solunes\Project\App\DefaultTask');
+    }
+
     public function project_type() {
-        return $this->belongsTo('Solunes\Project\App\Function');
+        return $this->belongsTo('Solunes\Project\App\DefaultTask', 'parent_id');
     }
 
     public function duty() {

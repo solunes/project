@@ -23,9 +23,13 @@ class DutyUser extends Model {
 		'user_id'=>'required',
 		'priority'=>'required',
 	);
-    
-    public function duty() {
+       
+    public function parent() {
         return $this->belongsTo('Solunes\Project\App\Duty');
+    }
+
+    public function duty() {
+        return $this->belongsTo('Solunes\Project\App\Duty', 'parent_id');
     }
     
     public function user() {

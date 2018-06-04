@@ -11,7 +11,7 @@ class ProjectTaskUpdate extends Model {
 
 	/* Creating rules */
 	public static $rules_create = array(
-		'project_task_id'=>'required',
+		'parent_id'=>'required',
 		'user_id'=>'required',
 		'status'=>'required',
 		'observations'=>'required',
@@ -22,14 +22,18 @@ class ProjectTaskUpdate extends Model {
 	/* Updating rules */
 	public static $rules_edit = array(
 		'id'=>'required',
-		'project_task_id'=>'required',
+		'parent_id'=>'required',
 		'user_id'=>'required',
 		'status'=>'required',
 		'observations'=>'required'
 	);
-    
-    public function project_task() {
+        
+    public function parent() {
         return $this->belongsTo('Solunes\Project\App\ProjectTask');
+    }
+
+    public function project_task() {
+        return $this->belongsTo('Solunes\Project\App\ProjectTask', 'parent_id');
     }
     
     public function user() {

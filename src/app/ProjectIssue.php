@@ -29,7 +29,7 @@ class ProjectIssue extends Model {
     }
     
     public function project_issue_updates() {
-        return $this->hasMany('Solunes\Project\App\ProjectIssueUpdate');
+        return $this->hasMany('Solunes\Project\App\ProjectIssueUpdate', 'parent_id');
     }
 
 }

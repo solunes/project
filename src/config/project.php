@@ -6,6 +6,7 @@ return [
 	'after_seed' => true,
 
 	// INTEGRATIONS
+	'solunes_sales' => false,
 	'gitlab' => false,
 	'gitlab_api_key' => NULL,
 

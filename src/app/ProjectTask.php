@@ -43,11 +43,12 @@ class ProjectTask extends Model {
         return $this->belongsTo('Solunes\Project\App\Project');
     }
 
-    public function project_task_updates() {
-        return $this->hasMany('Solunes\Project\App\ProjectTaskUpdate');
-    }
-    public function USer() {
+    public function User() {
         return $this->belongsTo('App\USer');
+    }
+
+    public function project_task_updates() {
+        return $this->hasMany('Solunes\Project\App\ProjectTaskUpdate', 'parent_id');
     }
 
 }

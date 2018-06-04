@@ -25,9 +25,13 @@ class ProjectIssueUpdate extends Model {
 		'status'=>'required',	
 		'content'=>'required',
 	);
-    
-    public function project_issue() {
+           
+    public function parent() {
         return $this->belongsTo('Solunes\Project\App\ProjectIssue');
+    }
+
+    public function project_issue() {
+        return $this->belongsTo('Solunes\Project\App\ProjectIssue', 'parent_id');
     }
 
 }

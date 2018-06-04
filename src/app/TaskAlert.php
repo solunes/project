@@ -30,8 +30,12 @@ class TaskAlert extends Model {
 
 	);
     
-    public function task() {
+    public function parent() {
         return $this->belongsTo('Solunes\Project\App\Task');
+    }
+
+    public function task() {
+        return $this->belongsTo('Solunes\Project\App\Task', 'parent_id');
     }
 
 }

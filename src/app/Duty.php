@@ -26,5 +26,9 @@ class Duty extends Model {
     public function project_type() {
         return $this->belongsTo('Solunes\Project\App\ProjectType');
     }
+    
+    public function duty_users() {
+        return $this->hasMany('Solunes\Project\App\DutyUser', 'parent_id');
+    }
 
 }
