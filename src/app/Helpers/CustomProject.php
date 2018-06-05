@@ -29,8 +29,8 @@ class CustomProject {
         $pm->type = 'blank';
         $pm->menu_type = 'admin';
         $pm->icon = 'area-chart';
-        $pm->permission = 'dashboard';
-        $pm->name = 'Gestión de Proyectos';
+        $pm->permission = 'project';
+        $pm->name = 'Desarrollo';
         $pm->save();
         $menu_array[] = ['parent_id'=>$pm->id,'level'=>2,'icon'=>'bar-chart','name'=>'Dashboard de Proyectos','link'=>'admin/project-dashboard'];
         $menu_array[] = ['parent_id'=>$pm->id,'level'=>2,'icon'=>'bar-chart','name'=>'Proyectos','link'=>'admin/projects'];
