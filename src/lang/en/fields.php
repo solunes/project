@@ -35,5 +35,14 @@ return [
     'updated_at' => 'Fecha de Edición',
     'user' => 'Usuario',
     'wiki_type' => 'Tipo de Wiki',
-
+    'default_task_howtos' => 'default_task_howtos',
+    'duty_users' => 'duty_users',
+    'estimated_hours' => 'estimated_hours',
+    'parent' => 'parent',
+    'project_issue_updates' => 'project_issue_updates',
+    'project_task_updates' => 'project_task_updates',
+    'sale' => 'sale',
+    'task' => 'task',
+    'task_alerts' => 'task_alerts',
+    
 ];

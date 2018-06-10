@@ -19,5 +19,6 @@ return array(
 	'reopened' => 'Reabierto',
 	'started' => 'Iniciado',
 	'support' => 'Soporte',
+	'holding' => 'En Espera',
 
 );
